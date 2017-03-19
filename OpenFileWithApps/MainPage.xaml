@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="OpenFileWithApps.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OpenFileWithApps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="This is a demonstartion of how to launch a file with different apps"/>
+            <Button Name="PickFileButton" Content="Pick a file" HorizontalAlignment="Left" VerticalAlignment="Center" Tapped="PickFileButton_Tapped"/>
+            <CheckBox Name="DefaultAppCheckBox" Margin="0 20 0 0" Content="Use default app"/>
+            <ComboBox Name="AssociatedAppsComboBox" Margin="0 20 0 0" Header="File's associated apps" HorizontalAlignment="Left" ItemsSource="{Binding}" Width="310">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayInfo.DisplayName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="This list has only Store apps"/>
+            <TextBlock Text="If there are no Store apps which can handle the file, then the list will be clear"/>
+            <Button Name="OpenFileButton" Margin="0 20 0 0" Content="Launch" Tapped="OpenFileButton_Tapped" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Page>
